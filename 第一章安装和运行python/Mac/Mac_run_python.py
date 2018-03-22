@@ -14,4 +14,8 @@
 
 #输入exit()就可以退出python shell
 
-
+#加载随机库，显示随机数
+# >>> import random
+# >>> random.random()
+# 0.8542878947962517
+# >>>
