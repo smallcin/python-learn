@@ -1,3 +1,4 @@
+# error：1
 #[Python]"no encoding declared 错误"解决方法
 
 # 在使用Python编译的时候出现如下错误：
@@ -14,3 +15,11 @@
 
 # 原因
 # 如果要在python2的py文件里面写中文，则必须要添加一行声明文件编码的注释，否则python2会默认使用ASCII编码。
+
+
+# error：2
+#   File "logic.py", line 18
+
+#     ^
+#IndentationError: expected an indented block 错误
+#代码缩进错误，在该缩进的地方缩进
