@@ -23,3 +23,10 @@
 #     ^
 #IndentationError: expected an indented block 错误
 #代码缩进错误，在该缩进的地方缩进
+
+#error：3
+#  File "getTime.py", line 19
+
+#                    ^
+# SyntaxError: invalid syntax  错误
+#缺少括号
