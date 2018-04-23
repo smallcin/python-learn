@@ -22,8 +22,9 @@
 # listb2.pack()
 # root.mainloop()
 
-import wx
-app = wx.App(False)
-frame = wx.Frame(None,wx.ID_ANY,"Hello World")
-frame.Show(True)
-app.MainLoop()
+# import wx
+# app = wx.App(False)
+# frame = wx.Frame(None,wx.ID_ANY,"Hello World")
+# frame.Show(True)
+# app.MainLoop()
+
