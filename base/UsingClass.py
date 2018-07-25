@@ -11,7 +11,7 @@ class Root(Frame):
 		self.label.pack()
 
 if __name__ == "__main__":
-	print "__name__:{}".format(__name__)
+	#print "__name__:{}".format(__name__)
 	root = Root()
 	root.mainloop()
 
