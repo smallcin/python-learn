@@ -11,33 +11,13 @@ import re
 
 
 
-def openInputFile(fileName,ofileName) :
-	
-	"在这个类里面 处理 传进来的文件内容然后转化成字典并且  写入到  新的文件中去 （文件路径就是当前终端打开的路径）"
-	# fo = open(fileName,"rb")
-	
-	# string =  fo.read()
-	# print "输入的文件中的 字符串 ：", string
-	
-	# string = string.replace("=",":")
-	# print string
-	# dic = eval(string)
-	# print dic
-	# print(dic['num'])
-	# list =  dic.keys()
-	# print list
-
-	# fo.close()
+def createOutputFile(ofileName) :
 	
 	'''
 	创建.h文件
 	'''
 	outfileName = "%s.h" % ofileName
 	foc = open(outfileName,"wb+")
-	
-# 	foc.write("//create by wangshen\n")
-# 	foc.write
-# 	foc.write("shuxing")
 
 	localTime =  time.localtime(time.time())
 # 	dateString = chr(localTime.tm_mday) + "/" + chr(localTime.tm_mon) + "/" + chr(localTime.tm_year)
@@ -100,9 +80,9 @@ def openInputFile(fileName,ofileName) :
 	fom.close()
 	
 	
-def createRandomCode(outputfilenameList):
+def createRandomCode(fileName,outputfilenameList):
 	#创建,h文件
-	ofileName = "randCode"
+	ofileName = fileName
 	outfileName = "%s.h" % ofileName
 	foc = open(outfileName,"wb+")
 	
@@ -139,38 +119,41 @@ def createRandomCode(outputfilenameList):
 
 	fom.write(ocmString)
 	fom.close()
+#读取配置文件
 def readTxt(fileName):
+
 	inputFile = open(fileName,"rb")
-	inputFileStr = inputfile.read()
-	print("fileName {}".format(inputFileStr))
-	inputFile = inputFile.replace("=",":")
+	inputFileStr = inputFile.read()
+	#print("fileName {}".format(inputFileStr))
+	inputFile = inputFileStr.replace("=",":")
 
 	dictTmp = eval(inputFile)
-	print("readTxt {}".format(dictTmp))
-
+	#print("readTxt {}".format(dictTmp))
+	#print("readTxt",dictTmp["FileName"],dictTmp["CreateFileNum"])
+	return dictTmp["FileName"],dictTmp["CreateFileNum"]
 def main(argv):
-	print("argv",os.getcwd(),os.path.abspath("system_read/json.txt"))
+	#输出路径
+	#print("argv",os.getcwd(),os.path.abspath("jsonConfig.txt"))
 	
+	#读取配置文件
+	fileName , createFileNum = readTxt(os.getcwd()+"/jsonConfig.txt")
 
-	readTxt("system_read/json.txt")
+	isDir = os.path.exists("rFile")
+	if isDir == False:
+		os.mkdir("rFile")
 
-   # inputfile = ''
-   # isDir = os.path.exists("rFile")
-   # if isDir == False:
-   # 	os.mkdir("rFile")
-
-   # os.chdir("rFile")
-   # outputfilenameList = []
-   # outputfileList = [chr(i) for i in range(65,91)] + [chr(i) for i in range(97,123)]
-   # for x in range(1,41):
-	  #  outputfilename = random.sample(outputfileList,8)
-	  #  outputfilesign = ""
-	  #  outputfilename = outputfilesign.join(outputfilename)
-	  #  outputfilenameList.append(outputfilename)
-	  #  openInputFile(inputfile,outputfilename)
+	os.chdir("rFile")
+   	outputFileNameList = []
+   	outputFileList = [chr(i) for i in range(65,91)] + [chr(i) for i in range(97,123)]
+   	for x in range(1,createFileNum):
+	   	outputFileName = random.sample(outputFileList,8)
+	   	outputFileSign = ""
+	   	outputFileName = outputFileSign.join(outputFileName)
+	   	outputFileNameList.append(outputFileName)
+	   	createOutputFile(outputFileName)
    
-   # createRandomCode(outputfilenameList)     
-   #print("Finish!")       
+   	createRandomCode(fileName,outputFileNameList)     
+   	print("Finish!")       
           
 
 if __name__ == "__main__":

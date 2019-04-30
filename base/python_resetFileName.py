@@ -39,6 +39,9 @@ def checkListDir(pathName,filePath,fileName):
 			print("{} is dir ==========:".format(os.path.abspath(pathName+file)))
 			checkListDir(os.path.abspath(pathName+file),filePath,fileName)
 			#resetName()
+			isDir = os.path.exists(pathName+fileName) 
+			if isDir == False:
+				os.mkdir(pathName+fileName)
 		else:
 			print("final -------------")
 			#os.system(exit())

@@ -8,7 +8,7 @@ PathName = "imgDir/"
 
 def start():
 
-  image_size = range(40, 250)
+  image_size = range(40, 550)
   #创建文件夹
   isDirImgDir = os.path.exists(PathName)
   if isDirImgDir == False:
@@ -27,7 +27,7 @@ def start():
     nameList = random.sample(listNameBody,7)
     strName = strSign.join(nameList)
 
-    if index%15 == 0:
+    if index%25 == 0:
       nameList = random.sample(listNameBody,7)
       dirStrName = strSign.join(nameList)
 
@@ -45,7 +45,7 @@ def start():
 def create_image(size,strName,dirPathName):
 
   pri_image = Image.open(inputFilePath)
-  pri_image.resize((size, size), Image.ANTIALIAS).save(dirPathName+"/jingitem_{}.png".format(strName))
+  pri_image.resize((size, size), Image.ANTIALIAS).save(dirPathName+"/jinitem_{}.png".format(strName))
 
 def showLog():
   print("python test.py -i <inputfile>")
@@ -71,6 +71,9 @@ def main(argv):
       sys.exit()
     elif opt in ("-i","--ifile"):
       inputFilePath = arg
+      if len(inputFilePath) <= 0:
+        print("image is nil")
+        sys.exit()
       #print("inputFilePath",inputFilePath)
       start()
     else:
